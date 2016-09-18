@@ -121,6 +121,8 @@ void dynamicScreen(int widthDyn, int heightDyn)
 
 void resize(int widthRes, int heightRes)
 {
+	// these codes works almost same as the dynamic screen function, you can pick one
+	/*
 	glViewport(0, 0, widthRes, heightRes);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -128,6 +130,8 @@ void resize(int widthRes, int heightRes)
 	glutReshapeWindow(1024, 768); // disable sizable window feature
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	*/
+	glutPostRedisplay();
 }
 
 
