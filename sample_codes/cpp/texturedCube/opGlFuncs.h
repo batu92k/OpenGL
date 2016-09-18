@@ -1,3 +1,9 @@
+/*
+	Copyright (c) 2016 Batuhan KINDAN
+	Distributed under the MIT License.
+	See License.txt or http://www.opensource.org/licenses/mit-license.php.
+*/
+
 #ifndef OPGLFUNCS_H_INCLUDED
 #define OPGLFUNCS_H_INCLUDED
 #include <string>

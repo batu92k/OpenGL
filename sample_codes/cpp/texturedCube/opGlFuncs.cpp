@@ -1,3 +1,9 @@
+/*
+Copyright (c) 2016 Batuhan KINDAN
+Distributed under the MIT License.
+See License.txt or http://www.opensource.org/licenses/mit-license.php.
+*/
+
 #include "opGlFuncs.h"
 #include <Gl/freeglut.h>
 #include <GL/gl.h>
