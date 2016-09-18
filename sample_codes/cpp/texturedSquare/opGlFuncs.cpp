@@ -52,10 +52,10 @@ void initScreen(int widthInit, int heightInit)
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
     // default texture import sequence
-	std::string fileName = "\\wood565.bmp";
+    std::string fileName = "\\wood565.bmp";
     fileName = getExePath()+ fileName;
     const char* fileChar = fileName.c_str();
-	tex = loadTexture( fileChar );
+    tex = loadTexture( fileChar );
 
     glutMainLoop();
 }
@@ -123,20 +123,19 @@ void backgroundColor(double* backColor)
 {
 
     glBegin(GL_POLYGON);
-        glColor3d(*(backColor),*(backColor+1),*(backColor+2));
-        glVertex3d(0,0,-300);
-        glColor3d(*(backColor+3), *(backColor+4), *(backColor+5));
-        glVertex3d(0,glutGet(GLUT_WINDOW_HEIGHT),-300);
-        glColor3d(*(backColor+6), *(backColor+7), *(backColor+8));
-        glVertex3d(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT), -300);
-        glColor3d(*(backColor+9), *(backColor+10), *(backColor+11));
-        glVertex3d(glutGet(GLUT_WINDOW_WIDTH), 0, -300);
+    glColor3d(*(backColor),*(backColor+1),*(backColor+2));
+    glVertex3d(0,0,-300);
+    glColor3d(*(backColor+3), *(backColor+4), *(backColor+5));
+    glVertex3d(0,glutGet(GLUT_WINDOW_HEIGHT),-300);
+    glColor3d(*(backColor+6), *(backColor+7), *(backColor+8));
+    glVertex3d(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT), -300);
+    glColor3d(*(backColor+9), *(backColor+10), *(backColor+11));
+    glVertex3d(glutGet(GLUT_WINDOW_WIDTH), 0, -300);
     glEnd();
 }
 
 void key(unsigned char key, int x, int y)
 {
-
     glutPostRedisplay();
 }
 
