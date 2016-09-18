@@ -72,7 +72,7 @@ void dynamicScreen(int widthDyn, int heightDyn)
     glLoadIdentity();
     glViewport(0, 0, widthDyn, heightDyn);
     glOrtho(0, widthDyn , 0, heightDyn , -4000, 4000);
-    //--------------- LINE SMOOTH & ANTIALIASING ---------------
+    //-------------------- Smoothing Process --------------------
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_TEXTURE_2D);
