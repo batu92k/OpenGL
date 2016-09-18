@@ -83,13 +83,17 @@ void dynamicScreen(int widthDyn, int heightDyn)
 
 void resize(int widthRes, int heightRes)
 {
-    glViewport(0, 0, widthRes, heightRes);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(widthRes/2, widthRes/2, - heightRes/2,  heightRes/2, 200, 200);
-    glutReshapeWindow(800,600); // disable sizable window feature
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity() ;glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    // these codes works almost same as the dynamic screen function, you can pick one
+    /*
+	glViewport(0, 0, widthRes, heightRes);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(widthRes / 2, widthRes / 2, -heightRes / 2, heightRes / 2, 200, 200);
+	glutReshapeWindow(1024, 768); // disable sizable window feature
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	*/
+	glutPostRedisplay();
 }
 
 void display(void)
