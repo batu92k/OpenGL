@@ -1,9 +1,6 @@
 #include "opGlFuncs.h"
-
 #include <GL/glut.h>
 #include <stdlib.h>
-
-
 
 /* Program entry point */
 
