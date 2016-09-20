@@ -81,7 +81,7 @@ void initScreen(int widthInit, int heightInit)
 	// default texture import sequence
 	std::string fileName = "\\wood565.bmp";
 	fileName = getExePath()+ fileName;
-    	const char* fileChar = fileName.c_str();
+    const char* fileChar = fileName.c_str();
 	tex = loadTexture( fileChar );
 	//----------------------------------------------------------------------------------------
 	glEnable(GL_LIGHTING);
@@ -120,7 +120,7 @@ void dynamicScreen(int widthDyn, int heightDyn)
 	glEnable(GL_LINE_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_POLYGON_SMOOTH);
-    	glHint(GL_POLYGON_SMOOTH_HINT,GL_NICEST);
+    glHint(GL_POLYGON_SMOOTH_HINT,GL_NICEST);
 	//-----------------------------------------------------------
 
 }
@@ -151,7 +151,7 @@ void display(void)
 	backgroundColor(backColor);
 	glPopMatrix();
 
-    	glEnable(GL_POLYGON_SMOOTH); // enable Polygon Smooth before drawing the textured cube
+    glEnable(GL_POLYGON_SMOOTH); // enable Polygon Smooth before drawing the textured cube
 	glEnable(GL_TEXTURE_2D); //  // enable Texture_2D before drawing the textured cube
 	glColor3f(1.0f, 1.0f, 1.0f); // reset colours before drawing the textured cube
 
@@ -302,19 +302,19 @@ void key(unsigned char key, int x, int y)
 {
     if(key == 'w')
     {
-	std::string fileName = "\\wood565.bmp";
+		std::string fileName = "\\wood565.bmp";
     	fileName = getExePath()+ fileName;
-	const char* fileChar = fileName.c_str();
-	tex = loadTexture( fileChar );
-	delete fileChar;
+		const char* fileChar = fileName.c_str();
+		tex = loadTexture( fileChar );
+		delete fileChar;
     }
     else if(key == 'a')
     {
-    	std::string fileName = "\\brick565.bmp";
-    	fileName = getExePath()+ fileName;
-    	const char* fileChar = fileName.c_str();
-	tex = loadTexture( fileChar );
-	delete fileChar;
+		std::string fileName = "\\brick565.bmp";
+		fileName = getExePath()+ fileName;
+		const char* fileChar = fileName.c_str();
+		tex = loadTexture( fileChar );
+		delete fileChar;
     }
 	glutPostRedisplay();
 }
@@ -325,7 +325,7 @@ void glMouse(int mouseButton, int buttonState, int x, int y)
 {
 	rotate = false;
 	if (mouseButton == GLUT_RIGHT_BUTTON)
-    	{
+    {
 		oldX = x;
 		oldY = y;
 		rotate = true;
@@ -336,7 +336,7 @@ void glMouse(int mouseButton, int buttonState, int x, int y)
 void OnMouseMove(int x, int y)
 {
 	if (rotate)
-    	{
+    {
 		theta += (x - oldX)*0.01f;
 		phi += (y - oldY)*0.01f;
 	}
