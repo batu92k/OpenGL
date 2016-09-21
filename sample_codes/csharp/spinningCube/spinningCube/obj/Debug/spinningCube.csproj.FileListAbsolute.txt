@@ -1,9 +1,0 @@
-C:\Users\arge\Desktop\spinningCube\spinningCube\bin\Debug\spinningCube.exe.config
-C:\Users\arge\Desktop\spinningCube\spinningCube\bin\Debug\spinningCube.exe
-C:\Users\arge\Desktop\spinningCube\spinningCube\bin\Debug\spinningCube.pdb
-C:\Users\arge\Desktop\spinningCube\spinningCube\obj\Debug\spinningCube.csprojResolveAssemblyReference.cache
-C:\Users\arge\Desktop\spinningCube\spinningCube\obj\Debug\spinningCube.Form1.resources
-C:\Users\arge\Desktop\spinningCube\spinningCube\obj\Debug\spinningCube.Properties.Resources.resources
-C:\Users\arge\Desktop\spinningCube\spinningCube\obj\Debug\spinningCube.csproj.GenerateResource.Cache
-C:\Users\arge\Desktop\spinningCube\spinningCube\obj\Debug\spinningCube.exe
-C:\Users\arge\Desktop\spinningCube\spinningCube\obj\Debug\spinningCube.pdb
