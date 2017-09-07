@@ -49,6 +49,11 @@ float theta = 0;																											// x axis mouse orbit
 float  phi = 0;																												// y axis mouse orbit
 double scale = 1.0;																											// defaulyt scale 
 
+/**
+* @brief  This function loads a texture from 5_6_5 bmp file
+* @param  const char* filename
+* @retval id;
+*/
 unsigned int Load_Texture(const char* filename)
 {
 	SDL_Surface* img = SDL_LoadBMP(filename);
@@ -146,8 +151,6 @@ void Dynamic_Screen(int widthDyn, int heightDyn)
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_POLYGON_SMOOTH);
     glHint(GL_POLYGON_SMOOTH_HINT,GL_NICEST);
-	//-----------------------------------------------------------
-
 }
 
 /**

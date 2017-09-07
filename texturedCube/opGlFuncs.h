@@ -1,6 +1,6 @@
 /**
 ******************************************************************************
-* @file    opGLFuncs.cpp
+* @file    opGLFuncs.h
 * @author  Ali Batuhan KINDAN
 * @version V1.0.0
 * @date    21.09.2016
