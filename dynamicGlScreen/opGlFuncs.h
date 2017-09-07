@@ -16,12 +16,12 @@ See License.txt or http://www.opensource.org/licenses/mit-license.php.
 
 #include <string>
 
-void initScreen(int, int);
-void dynamicScreen(int , int );
-void resize(int, int );
-void display(void);
-void key(unsigned char, int, int);
-void glMouse(int, int , int , int );
-void idle(void);
+void Init_Screen(int, int);
+void Dynamic_Screen(int , int );
+void Resize(int, int );
+void Display(void);
+void Key(unsigned char, int, int);
+void GL_Mouse(int, int , int , int );
+void Idle(void);
 
 #endif 
