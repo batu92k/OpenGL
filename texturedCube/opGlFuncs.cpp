@@ -72,7 +72,7 @@ unsigned int Load_Texture(const char* filename)
 * @param  int widthInit, int heightInit
 * @retval none
 */
-void initScreen(int widthInit, int heightInit)
+void Init_Screen(int widthInit, int heightInit)
 {
 	std::cout << "initialize window..." << std::endl;																		// Inform user
 	glutInitWindowSize(widthInit, heightInit);																				// Initialize the OpenGL window with given parameters
