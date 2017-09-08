@@ -7,7 +7,7 @@
 
 ### Tools
   
-  - You can find all the files needed in tools folder, also you can visit;
+  - You can find all the files needed in the tools folder, also you can visit;
 	http://freeglut.sourceforge.net/index.php#download 
 
 
