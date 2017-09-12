@@ -37,10 +37,16 @@ const GLfloat high_shininess[] = { 500.0f };
 
 unsigned int i = 0;                                                         // general purpose sentinel
 int lenght = 200;                                                           // cube edge lenght
-double backColor[12] = { 0.53 / 2, 1.09 / 2,
-						1.51 / 2, 0.051, 0.156,
-						0.256, 0.051, 0.156, 0.256,
-						0.53 / 2, 1.09 / 2, 1.51 / 2 };                     // default background color
+double backColor[12] =
+{
+0.53 / 2, 1.09 / 2,1.51 / 2,
+0.051, 0.156, 0.256,
+0.051, 0.156, 0.256,
+0.53 / 2, 1.09 / 2, 1.51 / 2
+};                                                                          // default background color
+
+
+
 unsigned int tex;
 int oldX = 0;                                                               // mouse cursor old X variable
 int oldY = 0;                                                               // mouse cursor old Y variable
