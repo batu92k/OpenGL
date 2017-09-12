@@ -28,28 +28,28 @@ See License.txt or http://www.opensource.org/licenses/mit-license.php.
 */
 void Init_Screen(int widthInit, int heightInit)
 {
-    std::cout << "initialize window..." << std::endl;																		// Inform user
-    glutInitWindowSize(widthInit, heightInit);																				// Initialize the OpenGL window with given parameters
-    glutInitWindowPosition(100,100);																						// Set the default position of window
-    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );																// Set display mode
-    glutCreateWindow("Monitor");																							// Set window name as "Monitor"
-    std::cout << "window initialization complete..." << std::endl;															// Inform user
+    std::cout << "initialize window..." << std::endl;                           // Inform user
+    glutInitWindowSize(widthInit, heightInit);                                  // Initialize the OpenGL window with given parameters
+    glutInitWindowPosition(100,100);                                            // Set the default position of window
+    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );                  // Set display mode
+    glutCreateWindow("Monitor");                                                // Set window name as "Monitor"
+    std::cout << "window initialization complete..." << std::endl;              // Inform user
 
-	/* OpenGL user call functions for reshape, display, keyboard, mouse and idle */
+    /* OpenGL user call functions for reshape, display, keyboard, mouse and idle */
     glutReshapeFunc(Resize);
     glutDisplayFunc(Display);
     glutKeyboardFunc(Key);
     glutMouseFunc(GL_Mouse);
     glutIdleFunc(Idle);
 
-    glClearColor(0, 0, 0, 0);																								// clear OpenGL window color
-    glMatrixMode(GL_MODELVIEW);																								// set matrix mode 
-    glLoadIdentity();																										// reset the matrix back to it's default state
-    glViewport(0, 0, widthInit, heightInit);																				// set viewport
-    glOrtho(0 , widthInit, 0, heightInit , -4000, 4000);																	// set origin point to bottom left
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);																		// clear color and dept buffer
+    glClearColor(0, 0, 0, 0);                                                   // clear OpenGL window color
+    glMatrixMode(GL_MODELVIEW);                                                 // set matrix mode
+    glLoadIdentity();                                                           // reset the matrix back to it's default state
+    glViewport(0, 0, widthInit, heightInit);                                    // set viewport
+    glOrtho(0 , widthInit, 0, heightInit , -4000, 4000);                        // set origin point to bottom left
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);                         // clear color and dept buffer
 
-    glutMainLoop();																											// enter the GLUT event processing loop
+    glutMainLoop();                                                             // enter the GLUT event processing loop
 }
 
 /**
@@ -59,12 +59,12 @@ void Init_Screen(int widthInit, int heightInit)
 */
 void Dynamic_Screen(int widthDyn, int heightDyn)
 {
-    glClearColor(0.24,0.45,0.4,0);																							// set background color
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);																		// clear color and dept buffer
-    glMatrixMode(GL_MODELVIEW);																								// set matrix mode 
-    glLoadIdentity();																										// reset the matrix back to it's default state
-    glViewport(0, 0, widthDyn, heightDyn);																					// set viewport
-    glOrtho(0, widthDyn , 0, heightDyn , -4000, 4000);																		// set origin point to bottom left
+    glClearColor(0.24,0.45,0.4,0);                                              // set background color
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);                         // clear color and dept buffer
+    glMatrixMode(GL_MODELVIEW);                                                 // set matrix mode
+    glLoadIdentity();                                                           // reset the matrix back to it's default state
+    glViewport(0, 0, widthDyn, heightDyn);                                      // set viewport
+    glOrtho(0, widthDyn , 0, heightDyn , -4000, 4000);                          // set origin point to bottom left
 }
 
 /**
@@ -85,7 +85,7 @@ void Resize(int widthRes, int heightRes)
 	glLoadIdentity();
 	*/
 
-    glutPostRedisplay();																									// re-display window
+    glutPostRedisplay();                                                        // re-display window
 }
 
 /**
@@ -95,9 +95,9 @@ void Resize(int widthRes, int heightRes)
 */
 void Display(void)
 {
-    Dynamic_Screen(glutGet(GLUT_WINDOW_WIDTH),glutGet(GLUT_WINDOW_HEIGHT));													// adjust OpenGL window height and width according to resize
-    Sleep(1);																												// sleep ~1ms
-    glutSwapBuffers();																										// swap buffers
+    Dynamic_Screen(glutGet(GLUT_WINDOW_WIDTH),glutGet(GLUT_WINDOW_HEIGHT));     // adjust OpenGL window height and width according to resize
+    Sleep(1);                                                                   // sleep ~1ms
+    glutSwapBuffers();                                                          // swap buffers
 }
 
 /**
@@ -107,7 +107,7 @@ void Display(void)
 */
 void Key(unsigned char key, int x, int y)
 {
-	glutPostRedisplay();																									// re-display window
+	glutPostRedisplay();                                                        // re-display window
 }
 
 /**
@@ -117,7 +117,7 @@ void Key(unsigned char key, int x, int y)
 */
 void GL_Mouse(int mouseButton, int buttonState, int x, int y)
 {
-	glutPostRedisplay();																									// re-display window
+	glutPostRedisplay();                                                        // re-display window
 }
 
 /**
@@ -127,7 +127,7 @@ void GL_Mouse(int mouseButton, int buttonState, int x, int y)
 */
 void Idle(void)
 {
-	glutPostRedisplay();																									// re-display window
+	glutPostRedisplay();                                                        // re-display window
 }
 
 
