@@ -35,19 +35,19 @@ const GLfloat mat_diffuse[] = { 0.8f, 0.8f, 0.8f, 1.0f };
 const GLfloat mat_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 const GLfloat high_shininess[] = { 500.0f };
 
-unsigned int i = 0;																											// general purpose sentinel
-int lenght = 200;
-double backColor[12] = { 0.53 / 2, 1.09 / 2,	
-						1.51 / 2, 0.051, 0.156, 
-						0.256, 0.051, 0.156, 0.256, 
-						0.53 / 2, 1.09 / 2, 1.51 / 2 };																		// default background color
+unsigned int i = 0;                                                         // general purpose sentinel
+int lenght = 200;                                                           // cube edge lenght
+double backColor[12] = { 0.53 / 2, 1.09 / 2,
+						1.51 / 2, 0.051, 0.156,
+						0.256, 0.051, 0.156, 0.256,
+						0.53 / 2, 1.09 / 2, 1.51 / 2 };                     // default background color
 unsigned int tex;
-int oldX = 0;																												// mouse cursor old X variable
-int oldY = 0;																												// mouse cursor old Y variable
-bool rotate = false;																										// rotate permission variable
-float theta = 0;																											// x axis mouse orbit
-float  phi = 0;																												// y axis mouse orbit
-double scale = 1.0;																											// defaulyt scale 
+int oldX = 0;                                                               // mouse cursor old X variable
+int oldY = 0;                                                               // mouse cursor old Y variable
+bool rotate = false;                                                        // rotate permission variable
+float theta = 0;                                                            // x axis mouse orbit
+float  phi = 0;                                                             // y axis mouse orbit
+double scale = 1.0;                                                         // defaulyt scale
 
 /**
 * @brief  This function loads a texture from 5_6_5 bmp file
@@ -60,7 +60,8 @@ unsigned int Load_Texture(const char* filename)
 	unsigned int id;
 	glGenTextures(1, &id);
 	glBindTexture(GL_TEXTURE_2D, id);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img->w, img->h, 0, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, img->pixels); 	
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img->w, img->h,
+               0, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, img->pixels);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	SDL_FreeSurface(img);
@@ -74,14 +75,14 @@ unsigned int Load_Texture(const char* filename)
 */
 void Init_Screen(int widthInit, int heightInit)
 {
-	std::cout << "initialize window..." << std::endl;																		// Inform user
-	glutInitWindowSize(widthInit, heightInit);																				// Initialize the OpenGL window with given parameters
-	glutInitWindowPosition(100, 100);																						// Set the default position of window
-	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);																// Set display mode
-	glutCreateWindow("Monitor");																							// Set window name as "Monitor"
-	std::cout << "window initialization complete..." << std::endl;															// Inform user
+	std::cout << "initialize window..." << std::endl;                       // Inform user
+	glutInitWindowSize(widthInit, heightInit);                              // Initialize the OpenGL window with given parameters
+	glutInitWindowPosition(100, 100);                                       // Set the default position of window
+	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);               // Set display mode
+	glutCreateWindow("Monitor");                                            // Set window name as "Monitor"
+	std::cout << "window initialization complete..." << std::endl;          // Inform user
 
-	/* OpenGL user call functions for reshape, display, keyboard, mouse and idle */
+    /* OpenGL user call functions for reshape, display, keyboard, mouse and idle */
 	glutReshapeFunc(Resize);
 	glutDisplayFunc(Display);
 	glutKeyboardFunc(Key);
@@ -90,26 +91,26 @@ void Init_Screen(int widthInit, int heightInit)
 	glutMotionFunc(On_Mouse_Move);
 	glutMouseWheelFunc(Mouse_Wheel);
 
-	glClearColor(0, 0, 0, 0);																								// clear OpenGL window color
-	glMatrixMode(GL_MODELVIEW);																								// set matrix mode 
-	glLoadIdentity();																										// reset the matrix back to it's default state
-	glViewport(0, 0, widthInit, heightInit);																				// set viewport
-	glOrtho(0, widthInit, 0, heightInit, -4000, 4000);																		// set origin point to bottom left
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);																		// clear color and dept buffer
+	glClearColor(0, 0, 0, 0);                                               // clear OpenGL window color
+	glMatrixMode(GL_MODELVIEW);                                             // set matrix mode
+	glLoadIdentity();                                                       // reset the matrix back to it's default state
+	glViewport(0, 0, widthInit, heightInit);                                // set viewport
+	glOrtho(0, widthInit, 0, heightInit, -4000, 4000);                      // set origin point to bottom left
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);                     // clear color and dept buffer
 
-	glClearDepth(1.0f);																										// clear depth buffer
-	glEnable(GL_DEPTH_TEST);																								// do depth comparisons and update the depth buffer
-	glEnable(GL_TEXTURE_2D);																								// do texture process and update the texture buffer
-	glDepthFunc(GL_LEQUAL);																									// set depth function less or equal
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);																		// set perspective correction to nicest quality
+	glClearDepth(1.0f);                                                     // clear depth buffer
+	glEnable(GL_DEPTH_TEST);                                                // do depth comparisons and update the depth buffer
+	glEnable(GL_TEXTURE_2D);                                                // do texture process and update the texture buffer
+	glDepthFunc(GL_LEQUAL);                                                 // set depth function less or equal
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);                      // set perspective correction to nicest quality
 
-	/* default texture import sequence */
+    /* default texture import sequence */
 	std::string fileName = "\\wood565.bmp";
 	fileName = Get_Exe_Path()+ fileName;
     const char* fileChar = fileName.c_str();
 	tex = Load_Texture( fileChar );
-	
-	/* Light and Material settings */
+
+    /* Light and Material settings */
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_NORMALIZE);
@@ -125,7 +126,7 @@ void Init_Screen(int widthInit, int heightInit)
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
 
-	glutMainLoop();																											// begin main loop
+	glutMainLoop();// begin main loop
 }
 
 /**
@@ -135,14 +136,14 @@ void Init_Screen(int widthInit, int heightInit)
 */
 void Dynamic_Screen(int widthDyn, int heightDyn)
 {
-	glClearColor(0.24, 0.45, 0.4, 0);																						// set background color
-	glEnable(GL_DEPTH_TEST);																								// do depth comparisons and update the depth buffer
-	glDepthFunc(GL_LEQUAL);																									// set depth function less or equal
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);																		// set perspective correction to nicest quality
-	glMatrixMode(GL_MODELVIEW);																								// set matrix mode 
-	glLoadIdentity();																										// reset the matrix back to it's default state
-	glViewport(0, 0, widthDyn, heightDyn);																					// set viewport
-	glOrtho(0, widthDyn, 0, heightDyn, -4000, 4000);																		// set origin point to bottom left
+	glClearColor(0.24, 0.45, 0.4, 0);                                       // set background color
+	glEnable(GL_DEPTH_TEST);                                                // do depth comparisons and update the depth buffer
+	glDepthFunc(GL_LEQUAL);                                                 // set depth function less or equal
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);                      // set perspective correction to nicest quality
+	glMatrixMode(GL_MODELVIEW);                                             // set matrix mode
+	glLoadIdentity();                                                       // reset the matrix back to it's default state
+	glViewport(0, 0, widthDyn, heightDyn);                                  // set viewport
+	glOrtho(0, widthDyn, 0, heightDyn, -4000, 4000);                        // set origin point to bottom left
 	//-------------------- Smoothing Process --------------------
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -180,32 +181,32 @@ void Resize(int widthRes, int heightRes)
 */
 void Display(void)
 {
-	Dynamic_Screen(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));												// adjust screen
-	glDisable(GL_TEXTURE_2D);																								// disable Texture_2D before drawing the background color
-	glDisable(GL_POLYGON_SMOOTH);																							// disable Polygon Smooth before drawing the background color
+	Dynamic_Screen(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));// adjust screen
+	glDisable(GL_TEXTURE_2D);                                               // disable Texture_2D before drawing the background color
+	glDisable(GL_POLYGON_SMOOTH);                                           // disable Polygon Smooth before drawing the background color
 
-	/* Draw Background */
+    /* Draw Background */
 	glPushMatrix();
 	glTranslated(0, 0, -500);
 	Set_Background_Color(backColor);
 	glPopMatrix();
 
-    glEnable(GL_POLYGON_SMOOTH);																							// enable Polygon Smooth before drawing the textured cube
-	glEnable(GL_TEXTURE_2D);																								// enable Texture_2D before drawing the textured cube
-	glColor3f(1.0f, 1.0f, 1.0f);																							// reset colors before drawing the textured cube
+    glEnable(GL_POLYGON_SMOOTH);                                            // enable Polygon Smooth before drawing the textured cube
+	glEnable(GL_TEXTURE_2D);                                                // enable Texture_2D before drawing the textured cube
+	glColor3f(1.0f, 1.0f, 1.0f);                                            // reset colors before drawing the textured cube
 
 	glPushMatrix();
 	glTranslated(glutGet(GLUT_WINDOW_WIDTH) / 2, glutGet(GLUT_WINDOW_HEIGHT) / 2, -100);
-	glScaled(scale, scale, scale);																							// mouse wheel zoom
-	glRotated(phi * 15, 1, 0, 0);																							// basic mouse orbit
-	glRotated(theta * 15, 0, 1, 0);																							// basic mouse orbit
-	glTranslated(-100, -100, -100);																							// offset for getting the center of the cube
-	Draw_Wireframe_Cube(200);																								// draw cube (wireframe)
-	Draw_Textured_Cube(lenght, tex);																						// draw cube (textured)
+	glScaled(scale, scale, scale);                                          // mouse wheel zoom
+	glRotated(phi * 15, 1, 0, 0);                                           // basic mouse orbit
+	glRotated(theta * 15, 0, 1, 0);                                         // basic mouse orbit
+	glTranslated(-100, -100, -100);                                         // offset for getting the center of the cube
+	Draw_Wireframe_Cube(200);                                               // draw cube (wireframe)
+	Draw_Textured_Cube(lenght, tex);                                        // draw cube (textured)
 	glPopMatrix();
 
-	Sleep(1);																												// sleep ~1ms
-	glutSwapBuffers();																										// swap buffers
+	Sleep(1);                                                               // sleep ~1ms
+	glutSwapBuffers();                                                      // swap buffers
 }
 
 /**
@@ -215,7 +216,7 @@ void Display(void)
 */
 void Set_Background_Color(double* backColor)
 {
-	/* draw background polygon according to given color parameters */
+    /* draw background polygon according to given color parameters */
 	glBegin(GL_POLYGON);
 	glColor3d(*(backColor), *(backColor + 1), *(backColor + 2));
 	glVertex3d(0, 0, -100);
@@ -268,7 +269,7 @@ void Draw_Textured_Cube(int cubeEdge, unsigned int texture)
 {
 	glBindTexture(GL_TEXTURE_2D, texture);
 
-	/* 1st face of cube */
+    /* 1st face of cube */
 	glBegin(GL_QUADS);
 	glNormal3d(0, 0, -1);//
 	glTexCoord2d(0.0, 0.0);
@@ -284,7 +285,7 @@ void Draw_Textured_Cube(int cubeEdge, unsigned int texture)
 	glVertex3d(cubeEdge, 0.0, 0.0);
 	glEnd();
 
-	/* 2nd face of cube */
+    /* 2nd face of cube */
 	glBegin(GL_QUADS);
 	glNormal3d(-1, 0, 0);//
 	glTexCoord2d(0.0, 0.0);
@@ -300,7 +301,7 @@ void Draw_Textured_Cube(int cubeEdge, unsigned int texture)
 	glVertex3d(0.0, 0.0, cubeEdge);
 	glEnd();
 
-	/* 3rd face of cube */
+    /* 3rd face of cube */
 	glBegin(GL_QUADS);
 	glNormal3d(0, 1, 0);//
 	glTexCoord2d(0.0, 0.0);
@@ -316,7 +317,7 @@ void Draw_Textured_Cube(int cubeEdge, unsigned int texture)
 	glVertex3d(cubeEdge, cubeEdge, 0.0);
 	glEnd();
 
-	/* 4th face of cube */
+    /* 4th face of cube */
 	glBegin(GL_QUADS);
 	glNormal3d(0, -1, 0);//
 	glTexCoord2d(0.0, 0.0);
@@ -332,7 +333,7 @@ void Draw_Textured_Cube(int cubeEdge, unsigned int texture)
 	glVertex3d(cubeEdge, 0.0, 0.0);
 	glEnd();
 
-	/* 5th face of cube */
+    /* 5th face of cube */
 	glBegin(GL_QUADS);
 	glNormal3d(1, 0, 0);//
 	glTexCoord2d(0.0, 0.0);
@@ -348,7 +349,7 @@ void Draw_Textured_Cube(int cubeEdge, unsigned int texture)
 	glVertex3d(cubeEdge, 0.0, cubeEdge);
 	glEnd();
 
-	/* 6th face of cube */
+    /* 6th face of cube */
 	glBegin(GL_QUADS);
 	glNormal3d(0, 0, 1);//
 	glTexCoord2d(0.0, 0.0);
@@ -373,7 +374,7 @@ void Draw_Textured_Cube(int cubeEdge, unsigned int texture)
 */
 void Key(unsigned char key, int x, int y)
 {
-	/* press 'w' and 'a' key to change cube texture */
+    /* press 'w' and 'a' key to change cube texture */
     if(key == 'w')
     {
 		std::string fileName = "\\wood565.bmp";
@@ -394,7 +395,7 @@ void Key(unsigned char key, int x, int y)
 	{
 
 	}
-	
+
 	glutPostRedisplay();
 }
 
@@ -423,8 +424,8 @@ void GL_Mouse(int mouseButton, int buttonState, int x, int y)
 */
 void On_Mouse_Move(int x, int y)
 {
-	/* when user press the "right button" of the mouse, GL_Mouse event triggered and sets "true" the quasi global bool rotate variable
-	   when rotate variable set as "true" this function calculate the differential position of mouse cursor and get rotate amounts whenever mouse moves */	    
+    /* when user press the "right button" of the mouse, GL_Mouse event triggered and sets "true" the quasi global bool rotate variable
+	   when rotate variable set as "true" this function calculate the differential position of mouse cursor and get rotate amounts whenever mouse moves */
 	if (rotate)
     {
 		theta += (x - oldX)*0.01f;
@@ -446,7 +447,7 @@ void On_Mouse_Move(int x, int y)
 */
 void Mouse_Wheel(int wheel, int direction, int x, int y)
 {
-	/* adjust scale variable according to mouse wheel  */
+    /* adjust scale variable according to mouse wheel  */
 	if (direction > 0)
 	{
 		scale += 0.2;
@@ -460,7 +461,7 @@ void Mouse_Wheel(int wheel, int direction, int x, int y)
 
 	}
 
-	/* limit minimum scale amount to 0.4 */
+    /* limit minimum scale amount to 0.4 */
 	if (scale < 0.4)
 	{
 		scale = 0.4;
