@@ -22,9 +22,9 @@ See License.txt or http://www.opensource.org/licenses/mit-license.php.
 */
 int main(int argc, char *argv[])
 {
-	glutInit(&argc, argv);																	// initialize GLUT
-	Init_Screen(800, 600);																	// initialize window
-	glutMainLoop();																			// begin loop
+	glutInit(&argc, argv);                                              // initialize GLUT
+	Init_Screen(800, 600);                                              // initialize window
+	glutMainLoop();                                                     // begin loop
 
 	return EXIT_SUCCESS;
 }
